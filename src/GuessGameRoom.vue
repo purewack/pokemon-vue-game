@@ -253,28 +253,28 @@ function postChat() {
   margin-right: 3rem;
   transform: translateY(50%) rotateX(-60deg) translateY(-60%);
 }
-.current-player .hand >>> .holder {
+.current-player .hand:deep(.holder) {
   transform: rotateX(-60deg) translateY(-100%);
 }
 
-.hand >>> .card {
+.hand:deep(.card) {
   transition:
     filter 0.5s,
     transform 0.5s;
 }
-.current-player .hand >>> .card:hover {
+.current-player .hand:deep(.card:hover) {
   transform: translateY(-8rem);
   filter: drop-shadow(0 0 10px green);
 }
 
-.other-player .hand >>> .card.discard {
+.other-player .hand:deep(.card.discard) {
   filter: brightness(0.4);
 }
 
-.ready-selection >>> .face-front {
+.ready-selection:deep(.face-front) {
   filter: brightness(0.1) blur(10px);
 }
-.ready-selection:hover >>> .face-front {
+.ready-selection:hover:deep(.face-front) {
   filter: none;
 }
 

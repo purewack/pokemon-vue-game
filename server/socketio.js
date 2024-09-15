@@ -1,13 +1,12 @@
 import { Server } from "socket.io";
 
 
-export function socketServer(port){
-const io = new Server(port || 3001, {
-  cors: { origin: "*" },
-});
-
+export function socketServer(server){
+const io = server !== undefined ? new Server(server) : new Server(8001, {
+  cors: '*'
+})
 io.on("connection", function (socket) {
-  
+  console.log("new connection")
   function getRoomSize(room) {
     return io.of("/").adapter.rooms.get(room)?.size;
   }
@@ -79,4 +78,5 @@ io.on("connection", function (socket) {
     }
   })
 });
+console.log("io.engine",io.engine)
 }

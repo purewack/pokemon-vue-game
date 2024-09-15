@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -48,8 +50,6 @@ h3 {
   margin: 0;
   padding: 0;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
 
 body,
 button,

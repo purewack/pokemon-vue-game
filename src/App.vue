@@ -6,11 +6,17 @@ import {
   clientRoomResponse,
   gameResponse,
   getPlayersCount,
+  serverConnection,
 } from "./client";
 import generatePublicDeck from "./logic/generatePublicDeck";
 import { ref, reactive } from "vue";
 import TestRoom from "./TestRoom.vue";
 import GuessGameRoom from "./GuessGameRoom.vue";
+
+const connected = ref(false)
+serverConnection((state)=>{
+  connected.value = state
+})
 
 const playersCount = ref()
 const gameRoom = reactive({
@@ -81,7 +87,8 @@ getPlayersCount()
 </script>
 
 <template>
-  <div class="menu list-down center" v-if="gameRoom.state !== 'ready'">
+  <div v-if="!connected" style="color: white; text-align: center"> Waiting for server connection</div>
+  <div class="menu list-down center" v-else-if=" gameRoom.state !== 'ready'">
     <header class="list-down">
       <img
         src="https://external-preview.redd.it/tQged7mKJ3cUpNMq5IMeceZvyKP3cTyHqhNmKEQ0Vv8.png?width=640&crop=smart&auto=webp&s=5fc89334e792e2c9b294d1d328bf522cdede4cdf"

@@ -1,10 +1,11 @@
 import { io } from "socket.io-client";
-const url = window.location.hostname +  (import.meta.env.DEV ? ':3001' : ":8001")
-const socket = io(url);
-console.log("ws url",url,import.meta.env.DEV,window.location)
- socket.on("connection-ok", (id) => {
-   console.log("made connection", id);
- });
+const socket = import.meta.env.DEV ? io('localhost:8001') :  io();
+export function serverConnection(callback){
+  socket.on("connection-ok", (id) => {
+    console.log("made connection", id);
+    callback(true)
+  });  
+}
 
 export function clientRoomQuery(roomID, query, data) {
   socket.emit("room_query", roomID, query, data);

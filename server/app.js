@@ -15,9 +15,10 @@ app.use(
   })
 );
 app.use(express.static(dist))
-console.log("Serving files from ",dist)
-
 const server = http.createServer(app)
-server.listen(8000)
 
-socketServer(8001)
+socketServer(server)
+
+const httpPort = process.env.PORT || 8000
+server.listen(httpPort)
+console.log("Serving files from ",dist, "port",httpPort)

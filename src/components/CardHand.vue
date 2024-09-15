@@ -48,7 +48,7 @@ function onHoverACard(card: CardData, index: number) {
   margin: 0;
 }
 
-.hand >>> .card.hover {
+.hand:deep(.card.hover) {
   transform: translateY(-30%);
 }
 </style>
